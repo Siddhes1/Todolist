@@ -1,11 +1,17 @@
 const Newtoinput = document.getElementById("totext");
 const addBtn = document.getElementById("todobtn");
 const tolist = document.getElementById("todolist");
+const existingCourses = new Set();
 
 function additem() {
   const test = Newtoinput.value.trim(); // Trim whitespace from input value
   if (test === "") {
     alert("Please enter a course name."); // Show an alert if input is empty
+    return; // Exit the function
+  }
+
+   if (existingCourses.has(test)) {
+    alert("Do not enter duplicate course names.");
     return; // Exit the function
   }
   const listitem = document.createElement("li");
